@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bought Receipt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      background-color: #E6E8EB;
+      padding: 16px;
+    }
+    @media screen and (min-width: 40em) {
+      body {
+        padding: 20px;
+      }
+    }
+    @media screen and (min-width: 64em) {
+      body {
+        padding: 50px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="css/receipt.css">
+</head>
+<body>
+
+  <div class="row column container-padded">
+    <div class="checkout-summary">
+      <img class="float-center" src="img/logo.png">
+      <div class="checkout-summary-title">
+        <p>10/27/18 4:30</p>
+        <p>1234567890</p>
+      </div>
+      <div class="checkout-summary-item">
+        <img src="https://placeimg.com/100/100/any">
+        <div class="item-name">
+          <p>Comfy Knit Blazer</p>
+          <p><span class="emphasis">Color: </span>Blue</p>
+          <p><span class="emphasis">Size: </span>M</p>
+        </div>
+        <div class="item-price">
+          <p class="emphasis text-right">$24.99</p>
+        </div>
+      </div>
+      <div class="checkout-summary-item">
+        <img src="https://placeimg.com/100/100/any">
+        <div class="item-name">
+          <p>Comfy Knit Blazer</p>
+          <p><span class="emphasis">Color: </span>Blue</p>
+          <p><span class="emphasis">Size: </span>M</p>
+        </div>
+        <div class="item-price">
+          <p class="emphasis text-right">$24.99</p>
+        </div>
+      </div>
+      <div class="checkout-summary-details">
+        <div class="left">
+          <p class="emphasis">Tax:</p>
+          <p class="emphasis">Total:</p>
+        </div>
+        <div class="right">
+          <p class=" text-right">$2.00</p>
+          <p class="emphasis text-right">$12.99</p>
+        </div>
+      </div>
+      <img class="float-center" src="img/c128.png">
+    </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

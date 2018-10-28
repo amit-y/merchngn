@@ -1,0 +1,62 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bought Receipt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <style>
+    body{background-color:#E6E8EB;padding:16px}@media screen and (min-width:40em){body{padding:20px}}@media screen and (min-width:64em){body{padding:50px}}.checkout-summary{background-color:#fefefe;padding-top:2rem;padding-bottom:2rem}.checkout-summary-item,.checkout-summary-title{display:-webkit-flex;display:-ms-flexbox;-webkit-justify-content:space-between;padding:1rem}.checkout-summary-title{display:flex;-ms-flex-pack:justify;justify-content:space-between;border:1px solid #e6e6e6;border-top:none}.checkout-summary-item{border-left:1px solid #e6e6e6;border-right:1px solid #e6e6e6;display:flex;-ms-flex-pack:justify;justify-content:space-between;border-bottom:1px solid #e6e6e6}.checkout-summary-item .item-name,.checkout-summary-item .item-price{padding:0}.checkout-summary-item .item-name p,.checkout-summary-item .item-price p{margin:0;padding:0}.emphasis{font-weight:700}.checkout-summary-details{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;padding:1rem;border:1px solid #e6e6e6;border-top:none;border-bottom:none}
+  </style>
+</head>
+<body>
+
+  <div class="row column container-padded">
+    <div class="checkout-summary">
+      <img class="float-center" src="img/logo.png">
+      <div class="checkout-summary-title">
+        <p class="odt"></p>
+        <p class="oid"></p>
+      </div>
+
+      <div class="checkout-summary-details">
+        <div class="left">
+          <!-- <p class="emphasis">Tax:</p> -->
+          <p class="emphasis">Total:</p>
+        </div>
+        <div class="right">
+          <!-- <p class="otax text-right"></p> -->
+          <p class="ototal emphasis text-right"></p>
+        </div>
+      </div>
+      <div class="summary-stmt">
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+  <script>
+    $(document).foundation();
+    function addItem(itemHtml, itemImgUrl, itemPrice) {
+      var html = '<div class="checkout-summary-item"><div class="item-img"><img src="{ITEM_IMG_URL}" width="100" height="100"></div><div class="item-name">{ITEM_HTML}</div><div class="item-price"><p class="emphasis text-right">{ITEM_PRICE}</p></div></div>';
+      html = html.replace('{ITEM_HTML}', itemHtml);
+      html = html.replace('{ITEM_IMG_URL}', itemImgUrl);
+      html = html.replace('{ITEM_PRICE}', itemPrice);
+      $('.checkout-summary-details').before($(html).addClass('animated bounceInUp'));
+      $('.ototal').removeClass('animated flash').text('$9.99').addClass('animated flash');
+    }
+    function closeReceipt(barcodeImg) {
+      var html = '<p class="emphasis text-center"><em>Thank you!</em></p>';
+      if (barcodeImg) html += '<img class="float-center" src="' + barcodeImg + '">';
+      $('.summary-stmt').removeClass('animated bounceInUp').html(html).addClass('animated bounceInUp');
+    }
+  </script>
+</body>
+</html>
