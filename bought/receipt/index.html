@@ -44,6 +44,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
   <script>
     $(document).foundation();
+    var animationEnd = (function(el) {
+      var animations = {
+        animation: 'animationend',
+        OAnimation: 'oAnimationEnd',
+        MozAnimation: 'mozAnimationEnd',
+        WebkitAnimation: 'webkitAnimationEnd',
+      };
+
+      for (var t in animations) {
+        if (el.style[t] !== undefined) {
+          return animations[t];
+        }
+      }
+    })(document.createElement('div'));
     function addItem(index, itemCode, itemPrice, orderTotal) {
       var html = '<div class="checkout-summary-item"><div class="item-img"><img src="{ITEM_IMG_URL}" width="100" height="100"></div><div class="item-name">{ITEM_HTML}</div><div class="item-price"><p class="emphasis text-right">{ITEM_PRICE}</p></div></div>';
       $.get('/bought/test/products/prod1.json')
@@ -55,8 +69,11 @@
         $('.ototal').removeClass('animated flash').text(orderTotal).addClass('animated flash');
       });
     }
-    function removeItem(index) {
-      $('.item-'+index).removeClass('animated bounceInUp').addClass('animated bounceOutDown');
+    function removeItem(index, orderTotal) {
+      $('.item-'+index).removeClass('animated bounceInUp').addClass('animated bounceOutDown').one(animationEnd, function() {
+        $(this).removeClass('animated bounceOutDown').addClass('hide');
+      });
+      $('.ototal').removeClass('animated flash').text(orderTotal).addClass('animated flash');
     }
     function closeReceipt(barcodeImg) {
       var html = '<p class="emphasis text-center"><em>Thank you!</em></p>';
