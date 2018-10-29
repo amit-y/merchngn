@@ -72,8 +72,8 @@
     function removeItem(index, orderTotal) {
       $('.item-'+index).removeClass('animated bounceInUp').addClass('animated bounceOutDown').one(animationEnd, function() {
         $(this).removeClass('animated bounceOutDown').addClass('hide');
+        $('.ototal').removeClass('animated flash').text(orderTotal).addClass('animated flash');
       });
-      $('.ototal').removeClass('animated flash').text(orderTotal).addClass('animated flash');
     }
     function closeReceipt(barcodeImg) {
       var html = '<p class="emphasis text-center"><em>Thank you!</em></p>';
